@@ -14,6 +14,12 @@ public class LoginPage extends PageFactory {
     @FindBy(id = "password")
     WebElement inputPassword;
 
+    @FindBy(id="login-button")
+    WebElement loginButton;
+
+    @FindBy(xpath = "//*[@id=\"login_button_container\"]/div/form/div[3]/h3")
+    WebElement textWaring;
+
     public LoginPage(WebDriver driver) {
       this.driver=driver;
       PageFactory.initElements(driver, this);
@@ -26,4 +32,12 @@ public class LoginPage extends PageFactory {
     public void enterPassword(String passWord){
         inputPassword.sendKeys(passWord);
     }
+
+    public void clickLoginButton(){
+        loginButton.click();
+    }
+    public String getWarningMessage(){
+        return textWaring.getText();
+    }
+    public  String getLoginText(){ return loginButton.getAttribute("value");}
 }

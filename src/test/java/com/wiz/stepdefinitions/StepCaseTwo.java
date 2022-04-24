@@ -7,8 +7,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-
-public class StepCaseOne extends BasePage {
+public class StepCaseTwo extends BasePage{
 
     private LoginPage login;
     private ProductPage product;
@@ -19,29 +18,33 @@ public class StepCaseOne extends BasePage {
 
     }
 
-    @Given("juan navigates to https:\\/\\/www.saucedemo.com\\/")
-    public void juan_navigates_to_https_www_saucedemo_com() {
+    @Given("ana navigates to https:\\/\\/www.saucedemo.com\\/")
+    public void ana_navigates_to_https_www_saucedemo_com() {
         // Write code here that turns the phrase above into concrete actions
         driver.get("https://www.saucedemo.com/");
         login=new LoginPage(driver);
         product=new ProductPage(driver);
     }
-    @When("he enter the correct info")
-    public void he_enter_the_correct_info() throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
 
-        login.enterUserInfoData("standard_user");
-        login.enterPassword("secret_sauce");
+    @When("he enter the incorrect info")
+    public void he_enter_the_incorrect_info() throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        login.enterUserInfoData("uno");
+        login.enterPassword("dos");
         login.clickLoginButton();
         Thread.sleep(3000);
     }
-    @Then("should see the product page")
-    public void should_see_the_product_page() throws InterruptedException {
-        Assert.assertEquals("products",product.getPageTittle().toLowerCase().trim());
+
+    @Then("should see info message")
+    public void should_see_info_message() {
+        // Write code here that turns the phrase above into concrete actions
+        Assert.assertEquals(login.getWarningMessage().trim(),"Epic sadface: Username and password do not match any user in this service");
     }
+
 
     @After
     public void quit(){
         driver.quit();
     }
+
 }
