@@ -15,6 +15,9 @@ public class ShoppingPage extends PageFactory{
     @FindBy(xpath = "/html/body/div/div/div/div[2]/div/div[1]/div[4]/div[2]/a/div\n")
     WebElement secondElementName;
 
+    @FindBy(id = "checkout")
+    WebElement checkoutButton;
+
     public ShoppingPage(WebDriver driver) {
         this.driver=driver;
         PageFactory.initElements(driver, this);
@@ -23,6 +26,7 @@ public class ShoppingPage extends PageFactory{
 
     public String getFirstElementName(){return firstElementName.getText();}
     public String getSecondElementName(){return secondElementName.getText();}
+    public void clickCheckoutButton(){checkoutButton.click();}
 
 
 }
