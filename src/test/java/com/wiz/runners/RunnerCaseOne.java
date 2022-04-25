@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/sortHigh.feature"},
+        features = {"src/test/resources/features/specificProduct.feature"},
         glue = {"com.wiz.stepdefinitions"})
 public class RunnerCaseOne {
 }
